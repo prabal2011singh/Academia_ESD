@@ -8,17 +8,17 @@ import lombok.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "specialisation_course")
+@Table(name = "specialization_course")
 public class SpecializationCourse {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @ManyToOne
-    @JoinColumn(name = "specialisation_id")
+    @JoinColumn(name = "specialization_id", referencedColumnName = "specialization_id")
     private Specialization specialization;
 
     @OneToOne
-    @JoinColumn(name = "course_id")
+    @JoinColumn(name = "course_id",referencedColumnName = "course_id")
     private Course course;
 }

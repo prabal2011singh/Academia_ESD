@@ -33,6 +33,6 @@ public class Employee {
     private String photographPath;
 
     @ManyToOne
-    @JoinColumn(name = "department_id", nullable = true)
+    @JoinColumn(name = "department_id", referencedColumnName = "department_id", nullable = false)
     private Department department;
 }

@@ -2,8 +2,11 @@ package com.prabal.academia.service;
 
 import com.prabal.academia.dto.SpecializationRequest;
 import com.prabal.academia.dto.SpecializationResponse;
+import com.prabal.academia.entity.Course;
 import com.prabal.academia.entity.Specialization;
+import com.prabal.academia.entity.SpecializationCourse;
 import com.prabal.academia.mapper.SpecializationMapper;
+import com.prabal.academia.repo.SpecializationCourseRepo;
 import com.prabal.academia.repo.SpecializationRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -16,16 +19,22 @@ import java.util.stream.Collectors;
 @Transactional
 public class SpecializationService {
     private final SpecializationRepository specializationRepository;
+    private final SpecializationCourseRepo specializationCourseRepo;
     private final SpecializationMapper specializationMapper;
 
     public List<SpecializationResponse> getAllSpecializations() {
-        System.out.println("===== in getall specialization");
+        //System.out.println("===== in getall specialization");
         return specializationRepository.findAll().stream()
                 .map(specializationMapper::toResponse)
                 .collect(Collectors.toList());
     }
 
-
+    public List<String> getSpecializationCourse(Long id)
+    {
+        Specialization spec=Specialization.builder().specializationId(id).build();
+        List<SpecializationCourse> specCourses=specializationCourseRepo.findBySpecialization(spec);
+        return specCourses.stream().map(specCourse->specCourse.getCourse().getName()).collect(Collectors.toList());
+    }
 
 
     public SpecializationResponse getSpecialization(Long id) {
@@ -50,6 +59,9 @@ public class SpecializationService {
     }
 
     public void deleteSpecialization(Long id) {
+        Specialization spec=Specialization.builder().specializationId(id).build();
+        List<SpecializationCourse> specCourses=specializationCourseRepo.findBySpecialization(spec);
+        specializationCourseRepo.deleteAll(specCourses);
         specializationRepository.deleteById(id);
     }
 }

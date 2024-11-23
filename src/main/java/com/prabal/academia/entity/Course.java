@@ -40,6 +40,4 @@ public class Course {
     @Column(name = "capacity", nullable = true)
     private Integer capacity;
 
-    @OneToOne(mappedBy = "course")
-    private SpecializationCourse specializationCourse;
 }

@@ -2,7 +2,6 @@ package com.prabal.academia.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.validation.constraints.*;
-import java.util.List;
 
 public record SpecializationRequest(
         @NotNull(message = "Code should be present")
@@ -29,6 +28,4 @@ public record SpecializationRequest(
         @JsonProperty("credits_required")
         Integer creditsRequired
 
-//        ,@JsonProperty("course_ids")
-//        List<Long> courseIds
 ) {}

@@ -22,20 +22,8 @@ public class SpecializationMapper {
     }
 
     public SpecializationResponse toResponse(Specialization entity) {
-//        return SpecializationResponse.builder()
-//                .id(entity.getSpecialisationId())
-//                .code(entity.getCode())
-//                .name(entity.getName())
-//                .description(entity.getDescription())
-//                .year(entity.getYear())
-//                .creditsRequired(entity.getCreditsRequired())
-//                .courses(entity.getSpecializationCourses().stream()
-//                        .map(sc -> courseMapper.toResponse(sc.getCourse()))
-//                        .toList())
-//                .build();
-
         return new SpecializationResponse(
-                entity.getSpecialisationId(),
+                entity.getSpecializationId(),
                 entity.getCode(),
                 entity.getName(),
                 entity.getDescription(),

@@ -9,12 +9,12 @@ import java.util.Set;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "specialisation")
+@Table(name = "specialization")
 public class Specialization {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "specialization_id")
-    private Long specialisationId;
+    private Long specializationId;
 
     @Column(name = "code", unique = true, nullable = false)
     private String code;
@@ -31,6 +31,4 @@ public class Specialization {
     @Column(name = "creditsRequired", nullable = false)
     private Integer creditsRequired;
 
-    @OneToMany(mappedBy = "specialization", cascade = CascadeType.REMOVE)
-    private Set<SpecializationCourse> specializationCourses;
 }
