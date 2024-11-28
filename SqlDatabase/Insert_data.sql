@@ -1,31 +1,35 @@
 INSERT INTO departments (name, capacity) VALUES
-('Admin Department', 50),
-('Academic Department', 100),
-('IT Department', 30);
+('Computer Science', 500),
+('Electrical Engineering', 400),
+('Mechanical Engineering', 350),
+('Civil Engineering', 300),
+('Information Technology', 450);
 
--- Insert employees
-INSERT INTO employees (first_name, last_name, email, title, photograph_path, department_id) VALUES
-('John', 'Doe', 'john.doe@university.com', 'Admin Officer', '/photos/john.jpg', 1),
-('Jane', 'Smith', 'jane.smith@university.com', 'Department Head', '/photos/jane.jpg', 1),
-('Mike', 'Johnson', 'mike.johnson@university.com', 'Admin Assistant', '/photos/mike.jpg', 1);
+-- Employees (passwords are hashed versions of 'password123')
+INSERT INTO employees (first_name, last_name, email, password, title, photograph_path, department_id) VALUES
+('John', 'Doe', 'john.doe@university.com', '$2a$10$xPJ5VZwXnXu6q0VzKK8Z8O.vlJ9z9KyGK9AOF/FBdxm0sCVx5cVKm', 'Professor', '/photos/john-doe.jpg', 1),
+('Jane', 'Smith', 'jane.smith@university.com', '$2a$10$xPJ5VZwXnXu6q0VzKK8Z8O.vlJ9z9KyGK9AOF/FBdxm0sCVx5cVKm', 'Associate Professor', '/photos/jane-smith.jpg', 2),
+('Robert', 'Johnson', 'robert.johnson@university.com', '$2a$10$xPJ5VZwXnXu6q0VzKK8Z8O.vlJ9z9KyGK9AOF/FBdxm0sCVx5cVKm', 'Assistant Professor', '/photos/robert-johnson.jpg', 3),
+('Mary', 'Williams', 'mary.williams@university.com', '$2a$10$xPJ5VZwXnXu6q0VzKK8Z8O.vlJ9z9KyGK9AOF/FBdxm0sCVx5cVKm', 'Professor', '/photos/mary-williams.jpg', 4),
+('Michael', 'Brown', 'michael.brown@university.com', '$2a$10$xPJ5VZwXnXu6q0VzKK8Z8O.vlJ9z9KyGK9AOF/FBdxm0sCVx5cVKm', 'Professor', '/photos/michael-brown.jpg', 5);
 
--- Insert specialisations
-INSERT INTO specialisation (code, name, description, year, credits_required) VALUES
-('TS', 'Theory & Systems', 'Focuses on theoretical computer science and systems design', 2024, 20),
-('DS', 'Data Science', 'Covers machine learning, data analytics, and statistical methods', 2024, 20),
-('SE', 'Software Engineering', 'Software development methodologies and engineering practices', 2024, 20),
-('AI', 'Artificial Intelligence', 'Study of intelligent systems and cognitive computing', 2024, 20);
+-- Courses
+INSERT INTO courses (course_code, course_name, description, year, term, faculty, credit('CS101', 'Introduction to Programming', 'Basic programming concepts using Java', 1, 'Fall', 'Computer('CS201', 'Data Structures', 'Advanced programming concepts and data structures', 2, 'Spring', 'Compute('EE101', 'Circuit Analysis', 'Fundamentals of electrical circuits', 1, 'Fall', 'Electrical En('ME101', 'Engineering Mechanics', 'Basic mechanical engineering principles', 1, 'Fall', 'Mechanical En('CV101', 'Structural Analysis', 'Fundamentals of civil engineering structures', 1, 'Spring', 'Civil Engineering', 3, 75);
 
--- Insert courses
-INSERT INTO courses (course_code, name, description, year, term, faculty, credits, capacity) VALUES
-('CS501', 'Advanced Algorithms', 'Study of complex algorithms and their applications', 2024, 'Fall', 'Dr. Smith', 4, 60),
-('CS502', 'Machine Learning', 'Introduction to machine learning concepts and applications', 2024, 'Fall', 'Dr. Johnson', 4, 50),
-('CS503', 'Software Architecture', 'Enterprise software design patterns and practices', 2024, 'Spring', 'Dr. Davis', 4, 55),
-('CS504', 'AI Fundamentals', 'Basic concepts of artificial intelligence', 2024, 'Spring', 'Dr. Wilson', 4, 45);
+-- Specializations
+INSERT INTO specialization (code, name, description, year, creditsRequired) VALUES
+('CS-SE', 'Software Engineering', 'Specialization in software development and engineering', 2023, 120),
+('CS-AI', 'Artificial Intelligence', 'Focus on AI and machine learning', 2023, 130),
+('EE-PE', 'Power Engineering', 'Specialization in electrical power systems', 2023, 125),
+('ME-TD', 'Thermal Design', 'Focus on thermal systems and design', 2023, 128),
+('CV-ST', 'Structural Engineering', 'Specialization in structural design and analysis', 2023, 126);
 
--- Insert specialisation-course mappings
-INSERT INTO specialisation_course (specialisation_id, course_id) VALUES
-(1, 1), -- Theory & Systems - Advanced Algorithms
-(2, 2), -- Data Science - Machine Learning
-(3, 3), -- Software Engineering - Software Architecture
-(4, 4); -- AI - AI Fundamentals
+-- Specialization Courses
+INSERT INTO specialization_course (specialization_id, course_id) VALUES
+(1, 1),
+(1, 2),
+(2, 1),
+(2, 2),
+(3, 3),
+(4, 4),
+(5, 5);

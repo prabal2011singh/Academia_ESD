@@ -2,10 +2,10 @@ ALTER TABLE employees
     ADD CONSTRAINT fk_employee_department
         FOREIGN KEY (department_id) REFERENCES departments(department_id);
 
-ALTER TABLE specialisation_course
-    ADD CONSTRAINT fk_spec_course_specialisation
-        FOREIGN KEY (specialisation_id) REFERENCES specialisation(specialisation_id);
+ALTER TABLE specialization_course
+    ADD CONSTRAINT fk_specialization_course_specialization
+        FOREIGN KEY (specialization_id) REFERENCES specialization(specialization_id);
 
-ALTER TABLE specialisation_course
-    ADD CONSTRAINT fk_spec_course_course
+ALTER TABLE specialization_course
+    ADD CONSTRAINT fk_specialization_course_course
         FOREIGN KEY (course_id) REFERENCES courses(course_id);

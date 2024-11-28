@@ -17,12 +17,14 @@ public class LoginService {
 
     public String loginEmployee(LoginRequest request) {
         Employee employee = employeeRepository.findByEmail(request.email())
-                .orElseThrow(() -> new IllegalArgumentException("Invalid email or password"));
+                .orElseThrow(() -> new IllegalArgumentException("Invalid email"));
+
+        if(!employee.getDepartment().getName().equals("Admin"))
+            throw new IllegalArgumentException("Invalid User");
 
         if (!encryptionService.validates(request.password(), employee.getPassword())) {
-            throw new IllegalArgumentException("Invalid email or password");
+            throw new IllegalArgumentException("Invalid password");
         }
-
         return jwtHelper.generateToken(request.email());
     }
 }
